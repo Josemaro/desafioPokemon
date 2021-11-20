@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
+
+import JWong.Dev.PokeApi.model.PokePage;
 import JWong.Dev.PokeApi.model.Pokemon;
 
 @Service
@@ -23,6 +25,13 @@ public class PokeService {
         .build();
     // ResponseEntity<Pokemon> entity = template.getForEntity(uri.toUriString(),Pokemon.class);
 
+    UriComponents uriPage = UriComponentsBuilder.newInstance()
+    .scheme("https")
+    .host("pokeapi.co/")
+    .path("api/v2/pokemon/")
+    // .queryParam("fields","all")
+    .build();
+
     public Pokemon getPokemon(String var){
         Pokemon p = new Pokemon();
         ResponseEntity<Pokemon> entity = template.getForEntity(uri.toUriString()+var,Pokemon.class);
@@ -37,6 +46,17 @@ public class PokeService {
         // System.out.println(entity.getBody());
         return p;
 
+    }
+
+    public PokePage getPokePage(String offset, String limit){
+        PokePage pp = new PokePage();
+        ResponseEntity<PokePage> entity = template.getForEntity(uriPage.toUriString()+"?limit="+limit+"&offset="+offset,PokePage.class);
+        pp.setCount(entity.getBody().getCount());
+        pp.setNext(entity.getBody().getNext());
+        pp.setPrevious(entity.getBody().getPrevious());
+        pp.setResults(entity.getBody().getResults());
+        
+        return pp;
     }
 
 }

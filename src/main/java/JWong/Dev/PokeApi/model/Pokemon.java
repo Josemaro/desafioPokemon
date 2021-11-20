@@ -8,8 +8,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Pokemon {
-
-
     @Getter @Setter
     private String id;
     @Getter @Setter
@@ -26,6 +24,4 @@ public class Pokemon {
     private String weight;
     @Getter @Setter
     private String img;
-
-
 }
