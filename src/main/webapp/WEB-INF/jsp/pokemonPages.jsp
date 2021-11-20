@@ -11,6 +11,25 @@
         <h2>TOTAL DE POKEMONES = ${pokePage.count}</h2>
         <h2>NEXT PAGE = ${pokePage.next}</h2>
         <h2>PREVIOUS PAGE = ${pokePage.previous}</h2>
+
+        <c:choose>
+            <c:when test="${param.offset-pokePage.results.size()>='0'}">
+                <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-success">Inicio</a>
+                <br>
+                <a href='http://localhost:8080/pokepage?offset=${param.offset+pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Siguiente</a>
+                <br>
+                <a href='http://localhost:8080/pokepage?offset=${param.offset-pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Anterior</a>
+                <br>
+                <br />
+            </c:when>    
+            <c:otherwise>
+                <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-success">Inicio</a>
+                <br>
+                <a href='http://localhost:8080/pokepage?offset=${param.offset+pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Siguiente</a>
+                <br>
+                <br />
+            </c:otherwise>
+        </c:choose>
         <!-- <c:forEach var="i" begin="0" end="${pokePage.results.size()}">
             <c:out value="${pokePage.results[i].name}"/><p>
         </c:forEach> -->

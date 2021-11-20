@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
 <html>
     <body>
         <br>
@@ -8,6 +10,10 @@
         <h2>Peso: ${pokemon.weight}</h2>
         <h2>Altura: ${pokemon.height}</h2>
         <img src=${pokemon.img}>
+        <br>
+        <script>
+            document.write('<a href="' + document.referrer + '" class="btn btn-success" >Go Back</a>');
+        </script>
         <br>
     </body>
 </html>
