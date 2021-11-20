@@ -1,5 +1,8 @@
 package JWong.Dev.PokeApi.controller;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import JWong.Dev.PokeApi.model.PokePage;
 import JWong.Dev.PokeApi.model.Pokemon;
+import JWong.Dev.PokeApi.model.Result;
 import JWong.Dev.PokeApi.service.PokeService;
 
 @Controller
@@ -40,6 +44,11 @@ public class PokeController {
         @RequestParam(value = "limit", defaultValue = "10", required = true) String limit, Model model){
         PokePage pp = service.getPokePage(offset,limit);
         model.addAttribute("pokePage",pp);
+        ArrayList<Pokemon> pokelist = new ArrayList<Pokemon>();
+        for(Result r: pp.getResults()){
+            pokelist.add(service.getPokemon(r.getName()));
+        }
+        model.addAttribute("pokelist",pokelist);
         return "pokemonPages";
     }
 

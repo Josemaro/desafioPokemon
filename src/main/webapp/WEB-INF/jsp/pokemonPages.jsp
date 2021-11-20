@@ -6,9 +6,16 @@
         <h2>TOTAL DE POKEMONES = ${pokePage.count}</h2>
         <h2>NEXT PAGE = ${pokePage.next}</h2>
         <h2>PREVIOUS PAGE = ${pokePage.previous}</h2>
-        <c:forEach var="i" begin="1" end="5">
-            Item <c:out value="${i}"/><p>
+        <!-- <c:forEach var="i" begin="0" end="${pokePage.results.size()}">
+            <c:out value="${pokePage.results[i].name}"/><p>
+        </c:forEach> -->
+        <h2>RESULTADOS = ${pokePage.results.size()}</h2>
+
+        <c:forEach var="i" begin="0" end="${pokePage.results.size()-1}">
+            <img src=${pokelist[i].img} width="170" height="170">
+            <h2>${pokelist[i].name}</h2>
+            <br>
         </c:forEach>
-        <h2>RESULTADOS = ${pokePage.results[0].url}</h2>
+        
     </body>
 </html>
