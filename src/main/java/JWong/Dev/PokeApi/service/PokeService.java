@@ -1,6 +1,10 @@
 package JWong.Dev.PokeApi.service;
 
 import org.springframework.stereotype.Service;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
@@ -9,6 +13,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import JWong.Dev.PokeApi.model.PokePage;
 import JWong.Dev.PokeApi.model.Pokemon;
 import JWong.Dev.PokeApi.model.Chain.EvolutionChain;
+import JWong.Dev.PokeApi.model.Chain.EvolutionChainUrl;
+import JWong.Dev.PokeApi.model.Chain.PokemonSpecies;
 
 @Service
 public class PokeService {
@@ -25,7 +31,6 @@ public class PokeService {
         // .queryParam("fields","all")
         .build();
     // ResponseEntity<Pokemon> entity = template.getForEntity(uri.toUriString(),Pokemon.class);
-
     UriComponents uriPage = UriComponentsBuilder.newInstance()
     .scheme("https")
     .host("pokeapi.co/")
@@ -36,6 +41,13 @@ public class PokeService {
     .scheme("https")
     .host("pokeapi.co/")
     .path("api/v2/evolution-chain/")
+    .build();
+
+    //https://pokeapi.co/api/v2/pokemon-species/{id or name}/
+    UriComponents uriSpecies = UriComponentsBuilder.newInstance()
+    .scheme("https")
+    .host("pokeapi.co/")
+    .path("api/v2/pokemon-species/")
     .build();
 
     public Pokemon getPokemon(String var){
@@ -72,5 +84,20 @@ public class PokeService {
         evolutionChain.setChain(entity.getBody().getChain());
 
         return evolutionChain;
+    }
+
+    public String getSpecie(String id) throws URISyntaxException{
+        PokemonSpecies species = new PokemonSpecies();
+        EvolutionChainUrl evolutionUrl = new EvolutionChainUrl();
+        ResponseEntity<PokemonSpecies> entity = template.getForEntity(uriSpecies.toUriString()+id,PokemonSpecies.class);
+        // System.out.println(entity.getStatusCodeValue());
+        species.setEvolution_chain(entity.getBody().getEvolution_chain());
+        // System.out.println(species.getEvolution_chain().getUrl());
+        evolutionUrl.setUrl(species.getEvolution_chain().getUrl());
+        URI uri = new URI(evolutionUrl.getUrl());
+        String[] segments = uri.getPath().split("/");
+        String idStr = segments[segments.length-1];
+        // System.out.println(idStr);
+        return idStr;
     }
 }

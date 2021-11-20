@@ -1,5 +1,6 @@
 package JWong.Dev.PokeApi.controller;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +32,11 @@ public class PokeController {
 
     @GetMapping({"/pokemon"})
     public String buscarPokemon(@RequestParam(value = "name", defaultValue = "pikachu",
-                                required = true) String name, Model model)
+                                required = true) String name, Model model) throws URISyntaxException
     {
         Pokemon p = service.getPokemon(name);
-        EvolutionChain e = service.getEvolution(p.getId());
-
+        String specieID = service.getSpecie(p.getId());
+        EvolutionChain e = service.getEvolution(specieID);
         model.addAttribute("name", name);
         model.addAttribute("pokemon",p);
         model.addAttribute("evolucion",e);

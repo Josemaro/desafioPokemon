@@ -16,6 +16,8 @@
         </script>
         <br>
         <h2>EvolutionChain: ${evolucion.id}</h2>
-        <h2>EvolutionChain: ${evolucion.chain.species.name}</h2>
+        <h2>Pokemon Base: ${evolucion.chain.species.name}</h2>
+        <h2>2da evolucion: ${evolucion.chain.evolves_to[0].species.name}</h2>
+        <h2>3ra evolucion: ${evolucion.chain.evolves_to[0].evolves_to[0].species.name}</h2>
     </body>
 </html>
