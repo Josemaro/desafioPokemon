@@ -26,7 +26,7 @@
                 <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-success">Inicio</a>
                 <br>
                 <a href='http://localhost:8080/pokepage?offset=${param.offset+pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Siguiente</a>
-                <br>
+                <br>    
                 <br />
             </c:otherwise>
         </c:choose>

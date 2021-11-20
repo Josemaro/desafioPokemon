@@ -8,6 +8,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import JWong.Dev.PokeApi.model.PokePage;
 import JWong.Dev.PokeApi.model.Pokemon;
+import JWong.Dev.PokeApi.model.Chain.EvolutionChain;
 
 @Service
 public class PokeService {
@@ -29,7 +30,12 @@ public class PokeService {
     .scheme("https")
     .host("pokeapi.co/")
     .path("api/v2/pokemon/")
-    // .queryParam("fields","all")
+    .build();
+
+    UriComponents uriEvolution = UriComponentsBuilder.newInstance()
+    .scheme("https")
+    .host("pokeapi.co/")
+    .path("api/v2/evolution-chain/")
     .build();
 
     public Pokemon getPokemon(String var){
@@ -59,4 +65,12 @@ public class PokeService {
         return pp;
     }
 
+    public EvolutionChain getEvolution(String id){
+        EvolutionChain evolutionChain = new EvolutionChain();
+        ResponseEntity<EvolutionChain> entity = template.getForEntity(uriEvolution.toUriString()+id,EvolutionChain.class);
+        evolutionChain.setId(entity.getBody().getId());
+        evolutionChain.setChain(entity.getBody().getChain());
+
+        return evolutionChain;
+    }
 }

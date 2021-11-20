@@ -1,6 +1,5 @@
 package JWong.Dev.PokeApi.controller;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import JWong.Dev.PokeApi.model.PokePage;
 import JWong.Dev.PokeApi.model.Pokemon;
 import JWong.Dev.PokeApi.model.Result;
+import JWong.Dev.PokeApi.model.Chain.EvolutionChain;
 import JWong.Dev.PokeApi.service.PokeService;
 
 @Controller
@@ -31,10 +31,15 @@ public class PokeController {
 
     @GetMapping({"/pokemon"})
     public String buscarPokemon(@RequestParam(value = "name", defaultValue = "pikachu",
-    required = true) String name, Model model){
-        model.addAttribute("name", name);
+                                required = true) String name, Model model)
+    {
         Pokemon p = service.getPokemon(name);
+        EvolutionChain e = service.getEvolution(p.getId());
+
+        model.addAttribute("name", name);
         model.addAttribute("pokemon",p);
+        model.addAttribute("evolucion",e);
+
         return "pokemon";
     }
 

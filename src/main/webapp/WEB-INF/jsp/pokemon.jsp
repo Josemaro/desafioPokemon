@@ -15,5 +15,7 @@
             document.write('<a href="' + document.referrer + '" class="btn btn-success" >Go Back</a>');
         </script>
         <br>
+        <h2>EvolutionChain: ${evolucion.id}</h2>
+        <h2>EvolutionChain: ${evolucion.chain.species.name}</h2>
     </body>
 </html>
