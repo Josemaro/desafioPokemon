@@ -41,6 +41,36 @@ public class PokeController {
         model.addAttribute("pokemon",p);
         model.addAttribute("evolucion",e);
 
+        try{
+            Pokemon e1 = service.getPokemon(e.getChain().getSpecies().getName());
+            if(e1 != null){
+                model.addAttribute("e1",e1);
+                Pokemon p1 = service.getPokemon(e1.getName());
+                model.addAttribute("p1",p1);
+            }
+            Pokemon e2 = service.getPokemon(e.getChain().getEvolves_to().get(0).getSpecies().getName());
+            if(e1 != null){
+                model.addAttribute("e2",e2);
+                Pokemon p2 = service.getPokemon(e2.getName());
+                model.addAttribute("p2",p2);
+            }
+            Pokemon e3 = service.getPokemon(e.getChain().getEvolves_to().get(0).getEvolves_to().get(0).getSpecies().getName());    
+            if(e1 != null){
+                model.addAttribute("e3",e3);
+                Pokemon p3 = service.getPokemon(e3.getName());
+                model.addAttribute("p3",p3);
+            }
+        }catch(Exception err){
+        }
+        // Pokemon e1 = service.getPokemon(e.getChain().getSpecies().getName());
+        // Pokemon e2 = service.getPokemon(e.getChain().getEvolves_to().get(0).getSpecies().getName());
+        // Pokemon e3 = service.getPokemon(e.getChain().getEvolves_to().get(0).getEvolves_to().get(0).getSpecies().getName());    
+
+        
+
+
+
+
         return "pokemon";
     }
 
