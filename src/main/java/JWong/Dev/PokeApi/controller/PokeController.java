@@ -77,7 +77,7 @@ public class PokeController {
     @GetMapping({"/pokepage"})
     public String paginable(
         @RequestParam(value = "offset", defaultValue = "0",required = true) String offset,
-        @RequestParam(value = "limit", defaultValue = "10", required = true) String limit, Model model){
+        @RequestParam(value = "limit", defaultValue = "12", required = true) String limit, Model model){
         PokePage pp = service.getPokePage(offset,limit);
         model.addAttribute("pokePage",pp);
         ArrayList<Pokemon> pokelist = new ArrayList<Pokemon>();
