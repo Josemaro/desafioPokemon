@@ -3,6 +3,7 @@
     p{
         text-align: center;
         font-family: Righteous;
+        font-size: 24px;
     }
     h2{
         font-family: Righteous;
@@ -11,7 +12,6 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        padding-top: 30px;
     }
     .button {
         text-transform: uppercase;
@@ -55,7 +55,7 @@
         
     }
     div.c {
-        background-color: rgb(218, 42, 42);
+        background-color: rgb(202, 248, 187);
         width: 520px;
         height: 800px;
         display: block;
@@ -66,13 +66,59 @@
         border-radius: 20px;
         border-bottom-left-radius: 0;
     }
-      
+    * {
+        box-sizing: border-box;
+      }
 
+
+      
+      /* Float four columns side by side */
+      .column {
+        float: left;
+        width: 25%;
+        padding: 10 10px;
+      }
+      
+      /* Remove extra left and right margins, due to padding */
+      .row {margin: 0 0px;}
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* Responsive columns */
+      @media screen and (max-width: 830px) {
+        .column {
+          width: 100%;
+          display: block;
+          margin-bottom: 20px;
+        }
+      }
+      
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: rgb(222, 244, 248);
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+        transition: all .2s ease;
+      }
+
+      .card:hover{
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+        background-color: rgb(180, 235, 248);
+        transform: translateY(-5px);
+        z-index: 1;
+      }
 </style>
 
 <html>
     <body>
-        <div class="c">
+        <!-- <div class="c">
             <br>
             <div class="b">
                 <div class="a">
@@ -115,6 +161,48 @@
             <img src=${p1.img} width="100" height="100">
             <img src=${p2.img} width="100" height="100">
             <img src=${p3.img} width="100" height="100">
+        </p> -->
+
+
+
+        <img src=${pokemon.img} width="230" height="230">
+        <br>
+        <p>
+            ID: ${pokemon.id}
+            <br>
+            Nombre: ${pokemon.name}
+            <br>
+            Experiencia Base: ${pokemon.base_experience}
+            <br>
+            Peso: ${pokemon.weight}
+            <br>
+            Altura: ${pokemon.height}
+            <br>
         </p>
+        <p>
+            EvolutionChain: ${evolucion.id}
+            <br>
+            Pokemon Base: ${evolucion.chain.species.name}
+            <br>
+            2da evolucion: ${evolucion.chain.evolves_to[0].species.name}
+            <br>
+            3ra evolucion: ${evolucion.chain.evolves_to[0].evolves_to[0].species.name}
+            <br>
+        </p>
+        <script>
+            document.write('<a class="button" href="' + document.referrer + '" class="btn btn-success" >Go Back</a>');
+        </script>
+        ${e1.name}
+        ${e2.name}
+        ${e3.name}
+        
+        ${empty e1}
+        ${empty e2}
+        ${(empty e3)}
+        
+        <img src=${p1.img} onerror="" width="100" height="100">
+        <img src=${p2.img} onerror="" width="100" height="100">
+        <img src=${p3.img} onerror="" width="100" height="100">
+        
     </body>
 </html>
