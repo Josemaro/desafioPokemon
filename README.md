@@ -15,7 +15,7 @@ API para las imágenes
 - https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/
 
 
-#Capturas
+## Capturas
 <p align="center"><img src="https://i.ibb.co/Trq1Rhv/1.png" alt="Pagina Principal"></p>
 
 <p align="center"><img src="https://i.ibb.co/dk4TbFQ/2.png" alt="Pagina Principal"></p>
