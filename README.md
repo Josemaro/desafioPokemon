@@ -1,10 +1,10 @@
 # Pokedex
+Spring MVC + JSTL + JSP
+
 Funciones: 
 - Busca de pokemon por nombre o ID
 - Cadena de Evolución del Pokemon
 - Resultados paginados
-
-Spring MVC + JSTL + JSP
 
 API
 - https://pokeapi.co/
@@ -13,3 +13,6 @@ API
 
 API para las imágenes
 - https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/
+
+
+<p align="center"><img src="https://ibb.co/XVkDpJ2" alt="Pagina Principal" height="300" width="500"></p>
