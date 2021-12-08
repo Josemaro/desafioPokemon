@@ -15,13 +15,24 @@
         background-color: rgb(208, 247, 211);
     }
     .button {
-        float: left;
-        display: block;
-        z-index: 1;
-        color: rgb(7, 230, 63);
-        border: 4px solid;
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: auto;
+        align-self: center;
+        font-size: 16px;
+        margin: 4px 2px;
         cursor: pointer;
-    }
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s;
+      }
+      .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+      }      
     .frame-container{
         background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
         margin: auto;
@@ -129,30 +140,44 @@
                 <p>
                     Id Cadena Evoluci&oacute;n: ${evolucion.id}
                     <br>
-                    Pokemon Base: ${evolucion.chain.species.name}
+                    Pokemon Base:
                     <br>
-                    2da evolucion: ${evolucion.chain.evolves_to[0].species.name}
+                    <span style="margin-left:1em"></span>${evolucion.chain.species.name}
                     <br>
-                    3ra evolucion: ${evolucion.chain.evolves_to[0].evolves_to[0].species.name}
+                    2do Nivel: 
                     <br>
+                    <span style="margin-left:1em"></span>
+                    ${evolucion.chain.evolves_to[0].species.name}
+                    <span style="margin-left:1em"></span>
+                    ${evolucion.chain.evolves_to[1].species.name}
+                    <span style="margin-left:1em"></span>
+                    ${evolucion.chain.evolves_to[2].species.name}
+                    <br>
+                    3er Nivel: <br>
+                    <span style="margin-left:1em"></span>
+                    ${evolucion.chain.evolves_to[0].evolves_to[0].species.name}
                 </p>
             </div>
         </div>
         <script>
-            document.write('<a class="button" href="' + document.referrer + '" class="btn btn-success" >Go Back</a>');
+            document.write('<a class="button button2" href="' + document.referrer + '" class="btn btn-success" >Atr&aacute;s</a>');
         </script>
-        ${e1.name}
-        ${e2.name}
-        ${e3.name}
         
-        ${empty e1}
-        ${empty e2}
-        ${(empty e3)}
-        
-        <img src=${p1.img} onerror="" width="100" height="100">
-        <img src=${p2.img} onerror="" width="100" height="100">
-        <img src=${p3.img} onerror="" width="100" height="100">
-        <br>
+        <!--
+            ${e1.name}
+            ${e2.name}
+            ${e3.name}
+            
+            ${empty e1}
+            ${empty e2}
+            ${(empty e3)}
+            
+            <img src=${p1.img} onerror="" width="100" height="100">
+            <img src=${p2.img} onerror="" width="100" height="100">
+            <img src=${p3.img} onerror="" width="100" height="100">
+            <br>
+
+        -->
 
     </body>
 </html>
