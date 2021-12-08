@@ -15,4 +15,4 @@ API para las imágenes
 - https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/
 
 
-<p align="center"><img src="https://i.ibb.co/Trq1Rhv/1.png" alt="Pagina Principal" height="300" width="500"></p>
+<p align="center"><img src="https://i.ibb.co/Trq1Rhv/1.png" alt="Pagina Principal"></p>
