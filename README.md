@@ -1,8 +1,8 @@
 # Pokedex
 Funciones: 
--Busca de pokemon por nombre o ID
--Cadena de Evolución del Pokemon
--Resultados paginados
+- Busca de pokemon por nombre o ID
+- Cadena de Evolución del Pokemon
+- Resultados paginados
 
 Spring MVC + JSTL + JSP
 
@@ -12,4 +12,4 @@ API
 
 
 API para las imágenes
-https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/
+- https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/
