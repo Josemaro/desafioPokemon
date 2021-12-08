@@ -95,37 +95,73 @@
         padding: 10px;
       }
 
+      .boton {
+        background-color: #04AA6D; /* Green background */
+        border: 2px solid black; /* Green border */
+        color: white; /* White text */
+        cursor: pointer; /* Pointer/hand icon */
+        float: center; /* Float the buttons side by side */
+      }
+      /* Add a black background color to the top navigation */
+      .topnav {
+        background-color: #333;
+        overflow: hidden;
+      }
+
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+      }
 </style>
 
 <html>
     <body>
-        <!-- <h2>TOTAL DE POKEMONES = ${pokePage.count}</h2>
-        <h2>NEXT PAGE = ${pokePage.next}</h2>
-        <h2>PREVIOUS PAGE = ${pokePage.previous}</h2> -->
-
-        <!-- <c:choose>
-            <c:when test="${param.offset-pokePage.results.size()>='0'}">
-                <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-success">Inicio</a>
-                <br>
-                <a href='http://localhost:8080/pokepage?offset=${param.offset+pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Siguiente</a>
-                <br>
-                <a href='http://localhost:8080/pokepage?offset=${param.offset-pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Anterior</a>
-                <br>
-                <br />
-            </c:when>    
-            <c:otherwise>
-                <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-success">Inicio</a>
-                <br>
-                <a href='http://localhost:8080/pokepage?offset=${param.offset+pokePage.results.size()}&limit=${pokePage.results.size()}' class="btn btn-success">Siguiente</a>
-                <br>    
-                <br />
-            </c:otherwise>
-        </c:choose> -->
-        <!-- <c:forEach var="i" begin="0" end="${pokePage.results.size()}">
-            <c:out value="${pokePage.results[i].name}"/><p>
-        </c:forEach> -->
+      <div class="topnav">
+        <a class="active" href="index">Inicio</a>
+        <form class="a" action="pokemon" align="right" style="margin-right: 10px;margin-top: 11px">
+          <input type="text" id="name" name="name" placeholder="Nombre o Id" />
+          <input type="submit" value="Buscar"/>
+        </form>
+      </div>
         <h2>TOTAL DE POKEMONES = ${pokePage.count}</h2>
-        <h2>RESULTADOS POR PAGINA = ${pokePage.results.size()}</h2>
+        <h2>RESULTADOS POR P&Aacute;GINA = ${pokePage.results.size()}</h2>
+        <div style="padding-left: 10px;">
+          <h3>
+            Cambiar cantidad de pokemones mostrados por p&aacute;gina
+          </h3>
+        </div>
+
+        <div style="padding-left: 10px;">
+          <form action="pokepage">
+              <select name="limit" style="height: 28px">
+                <option value="6">6</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="20">20</option>
+              </select>
+              <input type="submit" value="Ok" style="height: 28px"/>
+          </form>
+        </div>
+
+
+
         <div>
             <c:forEach var="i" begin="0" end="${pokePage.results.size()-1}">
                 <div class="row">
@@ -140,11 +176,16 @@
                     </div>
             </c:forEach>
         </div>
-        
+        <h2>
+          <c:set var = "pagina"  value = "${param.offset/pokePage.results.size()+1}"/>
+          <c:set var = "paginafinal"  value = "${pokePage.count/pokePage.results.size()}"/>
+          P&aacute;gina <fmt:formatNumber value="${pagina}" minFractionDigits="0" maxFractionDigits="0"/> de <fmt:formatNumber value="${paginafinal}" minFractionDigits="0" maxFractionDigits="0"/>
+        </h2>
+
         <div class="center">
             <div class="btn-group" style="width:100%; margin:auto">
                 <a href='http://localhost:8080/pokepage?offset=${0}&limit=${pokePage.results.size()}' class="btn btn-info"  style="width:10%" >Inicio</a>
-                <c:forEach var="i" begin="${param.offset/pokePage.results.size()}" end="${(param.offset/pokePage.results.size())+7}">
+                <c:forEach var="i" begin="${pagina-1}" end="${(pagina-1)+7}">
                     <a href='http://localhost:8080/pokepage?offset=${(i*pokePage.results.size())}&limit=${pokePage.results.size()}' style="width:10%" class="btn btn-success">${i+1}</a>
                     <!-- ${i*pokePage.results.size()} -->
                 </c:forEach>
