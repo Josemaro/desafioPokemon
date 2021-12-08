@@ -18,9 +18,11 @@ API para las imágenes
 
 ## Capturas
 <p align="center"><img src="https://i.ibb.co/Trq1Rhv/1.png" alt="Pagina Principal"></p>
-
+<br>
 <p align="center"><img src="https://i.ibb.co/dk4TbFQ/2.png" alt="Pagina Principal"></p>
-
+<br>
 <p align="center"><img src="https://i.ibb.co/DkwYX4p/3.png" alt="Pagina Principal"></p>
-
+<br>
 <p align="center"><img src="https://i.ibb.co/rwLnCZn/4.png" alt="Pagina Principal"></p>
+<br>
+<p align="center"><img src="https://i.ibb.co/nQ3BJyr/5.png" alt="Pagina Principal"></p>
