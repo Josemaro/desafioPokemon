@@ -1,12 +1,14 @@
 # Pokedex
-Spring MVC + JSTL + JSP
+## Descripción
+Proyecto desarrollado en Java con Spring Boot, Java Server Pages (JSP), JavaServer Pages Standard Tag Library (JSTL)
+Entre sus funciones se encuentran:
+- Visualización de los pokemon
+- Información de la cadena de evolución del pokemon
+- Vista de pokemons por páginas
+- Búsqueda por nombre o id del pokemon
 
-Funciones: 
-- Busca de pokemon por nombre o ID
-- Cadena de Evolución del Pokemon
-- Resultados paginados
-
-API
+## API´s
+API´s principales 
 - https://pokeapi.co/
 - https://pokeapi.co/api/v2/pokemon-species
 
